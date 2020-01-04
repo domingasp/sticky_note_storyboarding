@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css"> <!-- Website stylesheet -->
+        <link rel="stylesheet" href="styles/all.css"> <!-- Font Awesome -->
+        <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script> <!-- JQuery -->
+        <script type="text/javascript" src="scripts/html2canvas.min.js"></script> <!-- HTLM2Canvas for saving the storyboard-->
+
+        <!-- TODO: Favicon -->
+        
+        <title>Sticky Note Storyboarding</title>
+    </head>
+    <body>
+
+        <div id="mainDiv" class="main--div">
+            <!-- Top menu bar at the top of the page -->
+            <div class="top--banner" style="z-index: 3">
+                <p class="top--banner__p"><i class="fas fa-sticky-note"></i> Sticky Note Storyboarding</p>
+                <button class="top--banner__btn" onclick="createNewNote()">New Note</button>
+
+                <!-- Note color buttons of all notes -->
+                <button class="top--banner__btn--color--selected" style="background-color:#FDFD96;" onclick="changeAllNextNoteColor('Yellow', this)"><i class="far fa-sticky-note"></i></button>
+                <button class="top--banner__btn--color" style="background-color:#de528a;" onclick="changeAllNextNoteColor('Pink', this)"><i class="far fa-sticky-note"></i></button>
+                <button class="top--banner__btn--color" style="background-color:#38a1c5;" onclick="changeAllNextNoteColor('Blue', this)"><i class="far fa-sticky-note"></i></button>
+                <button class="top--banner__btn--color" style="background-color:#A6EF3E;" onclick="changeAllNextNoteColor('Green', this)"><i class="far fa-sticky-note"></i></button>
+
+                <!-- Tools for drawing on the canvas-->
+                <button id="pointerToolBtn" class="top--banner__btn--tool--selected" onclick="activatePointerTool(this)"><i class="fas fa-mouse-pointer"></i></button>
+                <button id="brushToolBtn" class="top--banner__btn--tool" onclick="activateBrushTool('', this)"><i class="fas fa-pen"></i></button>
+                <button id="eraserToolBtn" class="top--banner__btn--tool" onclick="activateEraserTool(this)"><i class="fas fa-eraser"></i></button>
+                <button id="dropperToolBtn" class="top--banner__btn--tool" onclick="activateDropperTool(this)"><i class="fas fa-eye-dropper"></i></button>
+                <input id="brushColorBtn" class="top--banner__input--brush--color" type="color" value="#000000" onchange="changeBrushColor(this)">
+                
+                <!-- Brush/Eraser dropdown selections -->
+                <input id="brushWidthSlider" class="top--banner__slider--width" type="range" min="1" max="100" value="4" oninput="changeToolWidth(this.value, 'slider')" style="display: none;">
+                <input id="brushWidthInput" class="top--banner__input--width" type="text" value="4" oninput="changeToolWidth(this.value, 'input')" style="display: none;">
+
+                <input id="eraserWidthSlider" class="top--banner__slider--width" type="range" min="1" max="100" value="20" oninput="changeToolWidth(this.value, 'slider')" style="display: none;">
+                <input id="eraserWidthInput" class="top--banner__input--width" type="text" value="20" oninput="changeToolWidth(this.value, 'input')" style="display: none;">
+                
+                <span id="strokeWidthUnitsSpan" class="top--banner__span--units" style="display: none;">px</span>
+
+                <!-- Delete notes and canvas buttons-->
+                <button class="top--banner__btn--delete" onclick="eraseWholeCanvas()">Clear Canvas</button>
+                <button class="top--banner__btn--delete" onclick="deleteAllNotes()">Delete all Notes</button>
+            </div>
+
+            <!-- Canvas's allow drawing. can is for the drawing. cursorCan is to draw the circle cursor. -->
+            <canvas id="can" class="canvas--background" width="300px" height="3000px" style="position:absolute; margin-top: 50px"></canvas>
+            <canvas id="cursorCan" class="canvas--background" width="300px" height="3000px" style="position:absolute; pointer-events: none; background-color: transparent; margin-top: 50px"></canvas>
+            <canvas id="buffer" width="300px" height="3000px" style="display: none;"></canvas>
+            
+            <!-- TESTING: Initial Note for testing purposes -->
+            <div class = "div--draggable" onmouseover="dragElement(this)" style="z-index: 1; top:55px">
+                <div class="div--draggable__top--banner">
+                    <button class="div--draggable__top--banner__btn--moveup" onclick="moveNoteLayerForward(this)"><i class="fas fa-arrow-circle-up"></i></button>
+                    <button class="div--draggable__top--banner__btn--movedown" onclick="moveNoteLayerBackwards(this)"><i class="fas fa-arrow-circle-down"></i></button>
+
+                    <span class="div--draggable__top--banner__separator">|</span>
+
+                    <button class="div--draggable__top--banner__btn--color--selected" style="background-color:#FDFD96;" onclick="changeIndividualNoteColor('Yellow', this)"><i class="far fa-sticky-note"></i></button>
+                    <button class="div--draggable__top--banner__btn--color" style="background-color:#de528a;" onclick="changeIndividualNoteColor('Pink', this)"><i class="far fa-sticky-note"></i></button>
+                    <button class="div--draggable__top--banner__btn--color" style="background-color:#38a1c5;" onclick="changeIndividualNoteColor('Blue', this)"><i class="far fa-sticky-note"></i></button>
+                    <button class="div--draggable__top--banner__btn--color" style="background-color:#A6EF3E;" onclick="changeIndividualNoteColor('Green', this)"><i class="far fa-sticky-note"></i></button>
+
+                    <button class="div--draggable__top--banner__btn--delete" onclick="deleteNote(this)">X</button>
+                </div>
+                
+                <textarea ondblclick="editingNoteText(this)" onblur="cancelEditingNoteText(this)" type="input"class="div--draggable__textarea">New Note</textarea>
+            </div>
+        </div>
+        
+        <!-- Links the mainjavascript.js file to the HTML. Is loaded last to ensure the elements exist before being manipulated by the script. -->
+        <script type="text/javascript" src="scripts/mainjavascript.js"></script>
+    </body>
+</html>

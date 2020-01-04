@@ -1,0 +1,499 @@
+/* ####################### RESET STARTED ####################### */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ####################### RESET FINISHED ####################### */
+
+/* Defines the two main font faces used */
+@font-face {
+	font-family: Lobster;
+	src:url(lobster_regular.ttf);
+}
+
+@font-face {
+	font-family: PatrickHand;
+	src:url(patrickhand_regular.ttf);
+}
+
+body {
+	height: 3000px;
+}
+
+.main--div {
+	position: relative;
+	height: 3000px;
+	overflow-y: hidden;
+}
+
+/* ################### Top Banner Styling ################### */
+.top--banner {
+	position: fixed;
+	top: 0;
+	width: 100%;
+
+	background-color: #696969;
+}
+
+.top--banner__p {
+	display: inline-block;
+	vertical-align: middle;
+
+	color: white;
+
+	font-family: Lobster;
+	font-size: 24px;
+	font-weight: bold;
+
+	margin: 8px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.top--banner__p {
+		width: 100%;
+	}
+}
+
+/* Buttons with text, e.g. "New Note", "Delete all Notes", "Clear Canvas" */
+.top--banner__btn {
+	display: inline-block;
+	vertical-align: middle;
+
+	background-color: #696969;
+	color: #FDFD96;
+
+	font-family: PatrickHand;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	text-decoration: none; 
+
+	border: solid;
+	border-width: 2px;
+	border-color: #FDFD96;
+	border-radius: 10px;
+
+	padding: 5px 10px;
+	margin: 8px;
+
+	cursor: pointer;
+}
+
+.top--banner__btn:hover {
+	background-color: #FDFD96;
+	color: #696969;
+}
+
+/* All note color buttons */
+.top--banner__btn--color {
+	vertical-align: middle;
+
+	color: #00000099;
+
+	font-family: PatrickHand;
+	font-size: 14px;
+
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+
+	margin-right: 3px;
+
+	cursor: pointer;
+}
+
+/* Select color of all notes button hover appearance */
+.top--banner__btn--color:hover {
+	border: dashed;
+	border-width: 1px;
+	border-color: black;
+}
+
+/* Appearance of currently selected color */
+.top--banner__btn--color--selected {
+	vertical-align: middle;
+	
+	font-family: PatrickHand;
+	font-size: 18px;
+
+	color: #000000FF;
+
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+
+	margin-right: 3px;
+
+	cursor: pointer;
+}
+
+/* Tool Buttons with icons, e.g. "Pointer", "Brush", "Eraser" */
+.top--banner__btn--tool {
+	display: inline-block;
+	vertical-align: middle;
+
+	width: 30px;
+	height: 30px;
+
+	background-color: #696969;
+	color: #FDFD96;
+
+	font-family: PatrickHand;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none; 
+
+	border: solid;
+	border-width: 2px;
+	border-color: #FDFD96;
+	border-radius: 2px;
+
+	cursor: pointer;
+}
+
+/* Tool Buttons hover appearance */
+.top--banner__btn--tool:hover {
+	background-color: #FDFD96;
+	color: #696969;
+}
+
+/* Tool Buttons selected appearance */
+.top--banner__btn--tool--selected {
+	display: inline-block;
+	vertical-align: middle;
+
+	width: 30px;
+	height: 30px;
+
+	background-color: #FDFD96;
+	color: orange;
+
+	font-family: PatrickHand;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none; 
+
+	border: none;
+	border-radius: 2px;
+
+	cursor: pointer;
+}
+
+/* Color selection button for brush color */
+.top--banner__input--brush--color {
+	display: inline-block;
+	vertical-align: middle;
+
+	width: 28px;
+	height: 28px;
+
+	background-color: transparent;
+
+	border: none;
+	border-radius: 2px;
+
+	cursor: pointer;
+
+	-webkit-appearance: none;
+}
+
+/* Hover appearance of brush color button */
+.top--banner__input--brush--color:hover {
+	background-color: #363636;
+}
+
+/* Appearance of color input type */
+.top--banner__input--brush--color::-webkit-color-swatch-wrapper {
+    padding: 0;	
+}
+
+/* Appearance of color input type */
+.top--banner__input--brush--color::-webkit-color-swatch {
+	border: solid;
+	border-width: 2px;
+	border-color: #EEEEEE;
+    border-radius: 100%;
+}
+
+/* Slider for brush/eraser size */
+.top--banner__slider--width {
+	vertical-align: middle;
+
+	width: 100px;
+}
+
+/* Input box for custom brush/eraser size */
+.top--banner__input--width {
+	vertical-align: middle;
+
+	width: 40px;
+	height: 24px;
+
+	font-family: Arial;
+	font-size: 14px;
+	text-align: right;
+
+	padding-right: 25px;
+}
+
+/* Units text that overlaps the input for custom brush/eraser size */
+.top--banner__span--units {
+	vertical-align: middle;
+	
+	font-family: Arial;
+	font-size: 14px;
+
+	margin-left: -25px;
+}
+
+/* Size of brush/eraser drop down selection menu */
+.top--banner__select--width {
+	vertical-align: middle;
+
+	width: 60px;
+	height: 24px;
+}
+
+/* Delete button appearance. "Delete all Notes", "Clear Canvas" */
+.top--banner__btn--delete {
+	vertical-align: middle;
+	float: right;
+
+	background-color: #696969;
+	color: #FDFD96;
+
+	font-family: PatrickHand;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none; 
+
+	border: solid;
+	border-width: 2px;
+	border-color: #FDFD96;
+	border-radius: 10px;
+
+	padding: 5px 10px;
+	margin: 8px;
+	
+	cursor: pointer;
+}
+
+/* Delete button hover appearance */
+.top--banner__btn--delete:hover {
+	background-color: #FDFD96;
+	color: #ff6961;
+}
+
+@media only screen and (max-width: 900px) {
+	.top--banner__btn--delete {
+		width: 100%;
+		margin: 0;
+		margin-bottom: 8px;
+		float: none;
+		border-radius: 0px;
+		border-left-width: 0px;
+		border-right-width: 0px;
+	}
+}
+
+/*  ################### END Top Banner Styling ################### */
+
+/*  ####################################### Note Styling ####################################### */
+
+/* Main div containing all note elements */
+.div--draggable {
+	position: absolute;
+	 
+	width: 200px;
+	height: 200px;
+	 
+	background-color: #FDFD96;
+
+	box-shadow: 0px 5px #00000055;
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: #EAEA8A;
+	border-radius: 5px;
+
+	cursor: grab;
+}
+
+/* Top banner of Notes */
+.div--draggable__top--banner {
+	width: 100%;
+	height: 25px;
+
+	background-color: #EAEA8A;
+}
+
+/* Buttons which change the notes layering or delete the note */
+.div--draggable__top--banner__btn--moveup, .div--draggable__top--banner__btn--movedown, .div--draggable__top--banner__btn--delete {
+	display: none;
+	vertical-align: middle;
+
+	background-color: transparent;
+	color: #00000099;
+
+	font-family: PatrickHand;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+
+	border: none;
+
+	cursor: pointer;
+}
+
+/* Delete note button */
+.div--draggable__top--banner__btn--delete {
+	vertical-align: middle;
+	float: right;
+
+	margin-right: 5px;
+}
+
+/* Note layering buttons*/
+.div--draggable__top--banner__btn--moveup, .div--draggable__top--banner__btn--movedown {
+	vertical-align: top;
+	
+	width: 20px;
+	height: 16px;
+	
+	text-align: center;
+
+	margin-right: 5px;
+}
+
+/* Hover appearance of buttons which change the notes layering or delete the note */
+.div--draggable__top--banner__btn--delete:hover, .div--draggable__top--banner__btn--moveup:hover, .div--draggable__top--banner__btn--movedown:hover {
+	 color: #000000FF;
+}
+
+/* Style of separator of layering buttons and color buttons */
+.div--draggable__top--banner__separator {
+	display: none;
+	vertical-align: middle;
+	
+	color: #00000099;
+
+	font-family: PatrickHand;
+	font-size: 16px;
+
+	margin-right: 5px;
+}
+
+/* Button to change individual note color */
+.div--draggable__top--banner__btn--color {
+	display: none;
+	vertical-align: middle;
+
+	font-family: PatrickHand;
+	font-size: 10px;
+
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+
+	margin-right: 3px;
+
+	cursor: pointer;
+}
+
+/* Button of current note color */
+.div--draggable__top--banner__btn--color--selected {
+	display: none;
+	vertical-align: middle;
+
+	font-family: PatrickHand;
+	font-size: 12px;
+
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+
+	margin-right: 3px;
+
+	cursor: pointer;
+}
+
+/* On hover of the main div displays any buttons */
+.div--draggable:hover > div > button, .div--draggable:hover > div > span {
+	display: inline;
+}
+
+/* Text area in the note */
+.div--draggable__textarea {
+	width: 196px;
+	height: 170px;
+
+	background-color: transparent;
+
+	resize: none;
+	overflow: hidden;
+
+	font-family: PatrickHand;
+	font-size: 24px;
+	font-weight: bold;
+
+	border: none;
+
+	caret-color: black;
+}
+
+/* Text area in the note when not focused, changes cursor to be a grab cursor */
+.div--draggable__textarea:not(focus) {
+	cursor: grab;
+}
+
+/* Text area in the note when it is focused, changes cursor to be a text cursor */
+.div--draggable__textarea:focus {
+	cursor: text;
+}
+
+/*  ####################################### END Note Styling ####################################### */
