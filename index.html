@@ -11,7 +11,7 @@
         
         <title>Sticky Note Storyboarding</title>
     </head>
-    <body>
+    <body onload="createNewNote()"
 
         <div id="mainDiv" class="main--div">
             <!-- Top menu bar at the top of the page -->
@@ -51,24 +51,6 @@
             <canvas id="cursorCan" class="canvas--background" width="300px" height="3000px" style="position:absolute; pointer-events: none; background-color: transparent; margin-top: 50px"></canvas>
             <canvas id="buffer" width="300px" height="3000px" style="display: none;"></canvas>
             
-            <!-- TESTING: Initial Note for testing purposes -->
-            <div class = "div--draggable" onmouseover="dragElement(this)" style="z-index: 1; top:55px">
-                <div class="div--draggable__top--banner">
-                    <button class="div--draggable__top--banner__btn--moveup" onclick="moveNoteLayerForward(this)"><i class="fas fa-arrow-circle-up"></i></button>
-                    <button class="div--draggable__top--banner__btn--movedown" onclick="moveNoteLayerBackwards(this)"><i class="fas fa-arrow-circle-down"></i></button>
-
-                    <span class="div--draggable__top--banner__separator">|</span>
-
-                    <button class="div--draggable__top--banner__btn--color--selected" style="background-color:#FDFD96;" onclick="changeIndividualNoteColor('Yellow', this)"><i class="far fa-sticky-note"></i></button>
-                    <button class="div--draggable__top--banner__btn--color" style="background-color:#de528a;" onclick="changeIndividualNoteColor('Pink', this)"><i class="far fa-sticky-note"></i></button>
-                    <button class="div--draggable__top--banner__btn--color" style="background-color:#38a1c5;" onclick="changeIndividualNoteColor('Blue', this)"><i class="far fa-sticky-note"></i></button>
-                    <button class="div--draggable__top--banner__btn--color" style="background-color:#A6EF3E;" onclick="changeIndividualNoteColor('Green', this)"><i class="far fa-sticky-note"></i></button>
-
-                    <button class="div--draggable__top--banner__btn--delete" onclick="deleteNote(this)">X</button>
-                </div>
-                
-                <textarea ondblclick="editingNoteText(this)" onblur="cancelEditingNoteText(this)" type="input"class="div--draggable__textarea">New Note</textarea>
-            </div>
         </div>
         
         <!-- Links the mainjavascript.js file to the HTML. Is loaded last to ensure the elements exist before being manipulated by the script. -->
